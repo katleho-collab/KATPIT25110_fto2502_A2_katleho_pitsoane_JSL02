@@ -50,3 +50,13 @@ A functional task entry system that ensures accurate data collection, validation
 - When there are no completed tasks:
 
   ![invalid status](./explainer-images/no%20completed%20tasks%20log.png)
+// Function to get and validate task status
+function getValidStatus(taskNumber) {
+    let status = prompt(`Enter status for Task ${taskNumber} (todo, doing, or done):`).toLowerCase();
+    // Validate status input to ensure it matches allowed values
+    while (status !== "todo" && status !== "doing" && status !== "done") {
+        alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
+        status = prompt(`Enter status for Task ${taskNumber} (todo, doing, or done):`).toLowerCase();
+    }
+    return status;
+}
