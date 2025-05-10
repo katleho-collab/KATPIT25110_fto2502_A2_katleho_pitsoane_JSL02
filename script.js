@@ -1,35 +1,53 @@
-// Function to get and validate task status
-function getValidStatus(taskNumber) {
-    let status = prompt(`Enter status for Task ${taskNumber} (todo, doing, or done):`).toLowerCase();
-    // Validate status input to ensure it matches allowed values
-    while (status !== "todo" && status !== "doing" && status !== "done") {
-        alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
-        status = prompt(`Enter status for Task ${taskNumber} (todo, doing, or done):`).toLowerCase();
-    }
-    return status;
+// Ask the user for the title and description of task 1
+const task1Title = prompt("Enter task 1 title:");
+const task1Description = prompt("Enter task 1 description:");
+
+// Ask for the status of task 1 and convert it to lowercase
+let task1Status = prompt(
+  "Enter task 1 status (todo, doing, done):"
+).toLowerCase();
+
+// Keep asking until the user enters a valid status for task 1
+while (
+  task1Status !== "todo" &&
+  task1Status !== "doing" &&
+  task1Status !== "done"
+) {
+  alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
+  task1Status = prompt(
+    "Enter task 1 status (todo, doing, done):"
+  ).toLowerCase();
 }
 
-// Collect details for Task 1
-let task1Title = prompt("Enter title for Task 1:");
-let task1Description = prompt("Enter description for Task 1:");
-let task1Status = getValidStatus(1);
+// Repeat the same steps for task 2
+const task2Title = prompt("Enter task 2 title:");
+const task2Description = prompt("Enter task 2 description:");
+let task2Status = prompt(
+  "Enter task 2 status (todo, doing, done):"
+).toLowerCase();
 
-// Collect details for Task 2
-let task2Title = prompt("Enter title for Task 2:");
-let task2Description = prompt("Enter description for Task 2:");
-let task2Status = getValidStatus(2);
+while (
+  task2Status !== "todo" &&
+  task2Status !== "doing" &&
+  task2Status !== "done"
+) {
+  alert("Invalid status. Please enter 'todo', 'doing', or 'done'.");
+  task2Status = prompt(
+    "Enter task 2 status (todo, doing, done):"
+  ).toLowerCase();
+}
 
-// Store tasks in an array for easier handling
-let tasks = [
-    { title: task1Title, description: task1Description, status: task1Status },
-    { title: task2Title, description: task2Description, status: task2Status }
-];
+// Check if task1 is done, and log it if so
+if (task1Status === "done") {
+  console.log("Title: " + task1Title + ", status: " + task1Status);
+}
 
-// Display completed tasks or motivational message
-let completedTasks = tasks.filter(task => task.status === "done");
-if (completedTasks.length > 0) {
-    // Log each completed task's title and status
-    completedTasks.forEach(task => console.log(`Title: ${task.title}, Status: ${task.status}`));
-} else {
-    console.log("No tasks completed, let's get to work!");
+// Check if task2 is done, and log it if so
+if (task2Status === "done") {
+  console.log("Title: " + task2Title + ", status: " + task2Status);
+}
+
+// If neither task1 nor task2 is done, show a motivational message
+if (task1Status !== "done" && task2Status !== "done") {
+  console.log("No tasks completed, let's get to work!");
 }
